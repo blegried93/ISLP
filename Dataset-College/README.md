@@ -16,6 +16,7 @@ Key focus: visualizing differences in tuition and student demographics between p
 - The variable 'Private' is a categorical indicator, i.e. each record is Yes or No for this variable.  The rest are numerical.
 - Preprocess categorical features through a one-hot encoding, as they are unordered. (TBD)
 - Linear regression and neural nets rely on all variables being numerical, so the one-hot encoding is required to incorporate this variable. (TBD)
+- Often useful to group records by categorical value and analyze separately first, then think about how to combine for modeling. (TBD)
 - Tree-based methods like Random Forests can handle the mixed data directly without a need for the one-hot encoding. (TBD)
 - Preprocess numerical features by normalizing if using distance-based or gradient-based methods. (TBD)
 
