@@ -4,6 +4,7 @@ Exploratory analysis of the ISLR/ISLP `College` dataset.
 Key focus: visualizing differences in tuition and student demographics between private and public institutions.
 
 ## Quick Look
+<img src="figures/boxplot_outstate.png" width="500">
 ![Outstate Tuition Boxplot](figures/boxplot_outstate.png)
 
 ## Highlights
