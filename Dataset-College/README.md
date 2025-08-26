@@ -15,4 +15,5 @@ Key focus: visualizing differences in tuition and student demographics between p
 
 Use the below command in a terminal or notebook environment such as bash, Jupyter, or Colab:
 
+```bash
 pip install -r requirements.txt
