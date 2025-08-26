@@ -4,9 +4,9 @@ Exploratory analysis of the ISLR/ISLP `College` dataset.
 Key focus: visualizing differences in tuition and student demographics between private and public institutions.
 
 ## Quick Look
-<img src="figures/boxplot_outstate.png" width="500">
-![Outstate Tuition Boxplot](figures/boxplot_outstate.png)
 
+![Outstate Tuition Boxplot](figures/boxplot_outstate.png)
+<img src="figures/boxplot_outstate.png" width="500">
 ## Highlights
 - Created a new variable `Elite` using `pd.cut`.
 - Visualized Out-of-State tuition by `Private`/`Public` status.
