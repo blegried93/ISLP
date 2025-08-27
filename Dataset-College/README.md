@@ -1,7 +1,7 @@
 # College Dataset Analysis
 
 Exploratory analysis of the ISLR/ISLP `College` dataset.  
-Key focus: visualizing differences in tuition and student demographics between private and public institutions.
+Key focus: understanding differences in Outstate Tuition between private and public institutions, relative to other predictors.
 
 Google Colab notebook:  [E2_8](notebooks/E2_8.ipynb)
 
