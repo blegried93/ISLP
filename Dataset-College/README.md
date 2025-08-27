@@ -3,7 +3,7 @@
 Exploratory analysis of the ISLR/ISLP `College` dataset.  
 Key focus: visualizing differences in tuition and student demographics between private and public institutions.
 
-Google Colab notebook:  [E2-8](notebooks/E2-8.ipynb)
+Google Colab notebook:  [E2_8](notebooks/E2_8.ipynb)
 
 ## Quick Look
 
