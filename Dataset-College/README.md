@@ -11,14 +11,16 @@ Key focus: visualizing differences in tuition and student demographics between p
 - Created a new variable `Elite` using `pd.cut`.
 - Visualized Out-of-State tuition by `Private`/`Public` status.
 - Compared distributions of Room & Board, Personal, and Books expenses.
+- Compared important features for predicting Outstate Tuition for Private and Non-Private schools using OLS and Lasso.
+- Determined importance of Private School Status relative to other features for Outstate Tuition using Random Forest and Lasso.
 
-## Observations About Details
+## Implementation Details
 - The variable 'Private' is a categorical indicator, i.e. each record is Yes or No for this variable.  The rest are numerical.
-- Preprocess categorical features through a one-hot encoding, as they are unordered. (TBD)
-- Linear regression and neural nets rely on all variables being numerical, so the one-hot encoding is required to incorporate this variable. (TBD)
-- Preprocess numerical features by normalizing if using distance-based or gradient-based methods. (TBD)
-- Often useful to group records by categorical value and analyze separately first, then think about how to combine for modeling. (TBD)
-- Tree-based methods like Random Forests can handle the mixed data directly without a need for the one-hot encoding. (TBD)
+- Preprocess categorical features through a one-hot encoding, as they are unordered.
+- Linear regression and neural nets rely on all variables being numerical, so the one-hot encoding is required to incorporate this variable.
+- Preprocess numerical features by normalizing if using distance-based or gradient-based methods.
+- Often useful to group records by categorical value and analyze separately first, then think about how to combine for modeling.
+- Tree-based methods like Random Forests can handle the mixed data directly without a need for the one-hot encoding.
 
 ## Requirements
 
