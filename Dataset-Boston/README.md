@@ -39,13 +39,11 @@ Google Colab notebook:  [E2_10](notebooks/E2_10.ipynb)
 - There is a decent but not overwhelming amount of multicollinearity in the dataset, so a Lasso hyperparameter of alpha = 0.1 was sufficient to perform feature selection.
 - CHAS is already binary, so it fits naturally as a regressor in the Random Forest regressor.  As said in highlights, RAD can be treated in two separate ways.
 
-## Feature Importances
+## Correlation, Error, Feature Importances by RAD
 - [CRIM, RAD, TAX, B (All Records)](figures/boston_scatter_figs_all.png)
 - [Correlation Heatmap (All Records)](figures/corr_matrix.png)
 - [CRIM, RAD, TAX, B (RAD = 24)](figures/boston_scatter_figs_RAD=24.png)
-- [Correlation Heatmap (RAD = 24)](figures/corr_matrix_RAD=24.png)
 - [CRIM, RAD, TAX, B (RAD != 24)](figures/boston_scatter_figs_RAD~=24.png)
-- [Correlation Heatmap (RAD != 24)](figures/corr_matrix_RAD~=24.png)
 - [Split RAD Importances](figures/Split_RAD_Importances.csv)
 - [Random Forest Errors](figures/RF_Error.csv)
 - [Random Forest Importances](figures/RF_Importances.csv)
