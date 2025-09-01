@@ -37,7 +37,7 @@ Google Colab notebook:  [E2_10](notebooks/E2_10.ipynb)
 - As before, we use StandardScaler() to normalize values so that feature importances can be compared.
 - B is a statistic derived from the proportion of black people in the town, but squaring creates a dispersion statistic that is intentionally ignorant of whether Bk was greater or less than 0.63.  This provides a more stable but potentially biased or rigid statistic.
 - There is a decent but not overwhelming amount of multicollinearity in the dataset, so a Lasso hyperparameter of alpha = 0.1 was sufficient to perform feature selection.
-- CHAS is already binary, so it fits naturally as a regressor in the Random Forest regressor.  As said in highlights, RAD can be treated in two separate ways.
+- CHAS is already binary, so it fits naturally as a feature in the Random Forest regressor.  As said in highlights, RAD can be treated in two separate ways.
 
 ## Correlation, Error, Feature Importances by RAD
 - [CRIM, RAD, TAX, B (All Records)](figures/boston_scatter_figs_all.png)
