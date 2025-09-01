@@ -10,8 +10,8 @@ Google Colab notebook:  [E2_10](notebooks/E2_10.ipynb)
 <img src="figures/boston_scatter_figs_all.png" width="700">
 
 ## Highlights
-- Found heavy correlation between cylinders (number of cylinders), displacement (engine size, broadly speaking), horsepower, and weight.  These are anticorrelated with mpg and acceleration.
-- Mpg is somewhat positively correlated with year, indicating potential technological advancement.
+- Per-capita crime rate (abbreviated CRIM, see Implementation Details below) has a correlative structure with many of the variables, including RAD, TAX, LSTAT, and B.  The highest pairwise correlation between any pair of the original variables was with RAD and TAX, owing to homogeneity for the class RAD = 24.
+- After removing records with RAD = 24, there is more heterogeneity between CRIM and features, including RAD and TAX.
 - Mpg is generally lower for American cars in aggregate, but also lower mpg when looking at the manufacturer level.
 - OLS performs relatively well for predicting Mpg on American cars from quantitative features.  Most important features appear to be weight and year, across regions.
 - Sparse analysis through Lasso shows similar important features.  Acceleration is much less predictive of mpg.
@@ -33,10 +33,10 @@ Google Colab notebook:  [E2_10](notebooks/E2_10.ipynb)
     B - 1000(Bk - 0.63)^2 where Bk is the proportion of black people by town \
     LSTAT - percent lower status of the population \
     MEDV - Median value of owner-occupied homes in $1000's
-- Many cars with the same name are featured in different years; a couple with the same name are featured in the same year.  Each entry has remarkably different specifications, so they are treated as different data points, though names are updated to distinguish them on identification.
-- Company names are extracted from names of cars for EDA; some company names are spelled incorrectly and need to be fixed.  Company names were fixed by hand.
-- Lasso is performed with alpha = 0.2, a moderately high regularization parameter.  This was required due to a high degree of correlation between features.  The resulting model helped to identify important features but will have more natural bias than the OLS model.
-- To implement the Random Forest regressor in scikit-learn (sklearn), the categorial variable for Origin needs to be replaced with a one-hot encoding.  That is, the three possibilities are spread out over three binary columns that are treated as separate features.  It will be interesting to know if there is a way to avoid the process of one-hot encoding, as there is a natural correlation between the resulting features.
+- CHAS and RAD are categorical variables, and RAD is not binary.  The possible values of RAD within the dataset are 1,2,3,4,5,6,7,8, and 24.  The value 24 corresponds to a relatively homogeneous population whose crime rate might be difficult to predict from this dataset.  TAX has viable interpretation as a quantitative variable, but it clusters around tracts that might require treatment as categorical.
+- B is a statistic derived from the proportion of black people in the town, but squaring creates a dispersion statistic that is intentionally ignorant of whether Bk was greater or less than 0.63.  This provides a more stable but potentially biased or rigid statistic.
+- There is a decent but not overwhelming amount of multicollinearity in the dataset, so a Lasso hyperparameter of alpha = 0.1 was sufficient to perform feature selection.
+- CHAS is already binary, so it fits naturally as a regressor in the Random Forest regressor.  As said in highlights, RAD can be treated in two separate ways.
 
 ## Feature Importances
 - [OLS Performance](figures/OLSErr.csv)
