@@ -18,21 +18,21 @@ Google Colab notebook:  [E2_10](notebooks/E2_10.ipynb)
 - Random forest with qualitative Origin variable attached shows origin not at all a driver of mpg.
 
 ## Implementation Details
-- Headers are absent from the original dataset, but they are added as follows:
+- Headers are absent from the original dataset, but they are added as follows: \
     CRIM - per capita crime rate by town \
     ZN - proportion of residential land zoned for lots over 25,000 sq.ft. \
-    INDUS - proportion of non-retail business acres per town.
-    CHAS - Charles River dummy variable (1 if tract bounds river; 0 otherwise)
-    NOX - nitric oxides concentration (parts per 10 million)
-    RM - average number of rooms per dwelling
-    AGE - proportion of owner-occupied units built prior to 1940
-    DIS - weighted distances to five Boston employment centres
-    RAD - index of accessibility to radial highways
-    TAX - full-value property-tax rate per $10,000
-    PTRATIO - pupil-teacher ratio by town
-    B - 1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town
-    LSTAT - % lower status of the population
-    MEDV - Median value of owner-occupied homes in $1000's
+    INDUS - proportion of non-retail business acres per town. \
+    CHAS - Charles River dummy variable (1 if tract bounds river; 0 otherwise) \
+    NOX - nitric oxides concentration (parts per 10 million) \
+    RM - average number of rooms per dwelling \
+    AGE - proportion of owner-occupied units built prior to 1940 \
+    DIS - weighted distances to five Boston employment centers \
+    RAD - index of accessibility to radial highways \
+    TAX - full-value property-tax rate per $10,000 \
+    PTRATIO - pupil-teacher ratio by town \
+    B - 1000(Bk - 0.63)^2 where Bk is the proportion of black people by town \
+    LSTAT - percent lower status of the population \
+    MEDV - Median value of owner-occupied homes in $1000's \
 - Many cars with the same name are featured in different years; a couple with the same name are featured in the same year.  Each entry has remarkably different specifications, so they are treated as different data points, though names are updated to distinguish them on identification.
 - Company names are extracted from names of cars for EDA; some company names are spelled incorrectly and need to be fixed.  Company names were fixed by hand.
 - Lasso is performed with alpha = 0.2, a moderately high regularization parameter.  This was required due to a high degree of correlation between features.  The resulting model helped to identify important features but will have more natural bias than the OLS model.
