@@ -11,11 +11,10 @@ Google Colab notebook:  [E2_10](notebooks/E2_10.ipynb)
 
 ## Highlights
 - Per-capita crime rate (abbreviated CRIM, see Implementation Details below) has a correlative structure with many of the variables, including RAD, TAX, LSTAT, and B.  The highest pairwise correlation between any pair of the original variables was with RAD and TAX, owing to homogeneity for the class RAD = 24.
-- After removing records with RAD = 24, there is more heterogeneity between CRIM and features, including RAD and TAX.
-- Mpg is generally lower for American cars in aggregate, but also lower mpg when looking at the manufacturer level.
-- OLS performs relatively well for predicting Mpg on American cars from quantitative features.  Most important features appear to be weight and year, across regions.
-- Sparse analysis through Lasso shows similar important features.  Acceleration is much less predictive of mpg.
-- Random forest with qualitative Origin variable attached shows origin not at all a driver of mpg.
+- After removing records with RAD = 24, there is more heterogeneity between CRIM and features, including RAD and TAX.  The RAD = 24 set is less heterogeneous, so it will be harder to explain the variation in the prediction from the features that we have. OLS and Lasso are performed on both populations.  Predictably, R^2 and RMSE show a better performance in predicting the crime rate in the RAD < 24 set.
+- In implementing Lasso with alpha = 0.1 on the RAD < 24 set, the R^2 increased slightly while RMSE decreased slightly. This means that Lasso is reducing the effect of redundant features though it makes a simpler model. On the other hand, when applied to the RAD = 24 set, the R^2 decreased while RMSE increased. There is almost no signal to find, so shrinkage (pulling extreme observations out) adds bias without meaningful reduction in variance.
+- The random forest in sklearn can handle binary indicators, but it is important to see if there is a role in the specific values in RAD. So, we perform a random forest model in two cases. The first case is where RAD is removed but leave only RAD_24, an indicator for RAD = 24. The second case is where the values of RAD are retained. Both models perform very well in terms of R^2 and RMSE; they explain a similar amount of variance to Lasso for RAD < 24 but even have a significant drop in test error as shown with RMSE. The features selected in each are basically the same.
+- Drivers: The most important drivers of crime rate are MEDV, RAD, and NOX.  RAD_24 can be used in place of RAD without a difference in model performance.
 
 ## Implementation Details
 - Headers are absent from the original dataset, but they are added as follows: \
@@ -34,16 +33,22 @@ Google Colab notebook:  [E2_10](notebooks/E2_10.ipynb)
     LSTAT - percent lower status of the population \
     MEDV - Median value of owner-occupied homes in $1000's
 - CHAS and RAD are categorical variables, and RAD is not binary.  The possible values of RAD within the dataset are 1,2,3,4,5,6,7,8, and 24.  The value 24 corresponds to a relatively homogeneous population whose crime rate might be difficult to predict from this dataset.  TAX has viable interpretation as a quantitative variable, but it clusters around tracts that might require treatment as categorical.
+- The variable RAD_24 is a binary variable created to indicate 1 when RAD = 24 and 0 otherwise.
+- As before, we use StandardScaler() to normalize values so that feature importances can be compared.
 - B is a statistic derived from the proportion of black people in the town, but squaring creates a dispersion statistic that is intentionally ignorant of whether Bk was greater or less than 0.63.  This provides a more stable but potentially biased or rigid statistic.
 - There is a decent but not overwhelming amount of multicollinearity in the dataset, so a Lasso hyperparameter of alpha = 0.1 was sufficient to perform feature selection.
 - CHAS is already binary, so it fits naturally as a regressor in the Random Forest regressor.  As said in highlights, RAD can be treated in two separate ways.
 
 ## Feature Importances
-- [OLS Performance](figures/OLSErr.csv)
-- [OLS Importances](figures/OLSImportances.csv)
-- [Lasso Performance](figures/LassoErr.csv)
-- [Lasso Importances](figures/LassoImportances.csv)
-- [Random Forest Importances](figures/RFImportances.csv)
+- [CRIM, RAD, TAX, B (All Records)](figures/boston_scatter_figs_all.png)
+- [Correlation Heatmap (All Records)](figures/corr_matrix.png)
+- [CRIM, RAD, TAX, B (RAD = 24)](figures/boston_scatter_figs_RAD=24.png)
+- [Correlation Heatmap (RAD = 24)](figures/corr_matrix_RAD=24.png)
+- [CRIM, RAD, TAX, B (RAD != 24)](figures/boston_scatter_figs_RAD~=24.png)
+- [Correlation Heatmap (RAD != 24)](figures/corr_matrix_RAD~=24.png)
+- [Split RAD Importances](figures/Split_RAD_Importances.csv)
+- [Random Forest Errors](figures/RF_Error.csv)
+- [Random Forest Importances](figures/RF_Importances.csv)
 
 
 ## Requirements
