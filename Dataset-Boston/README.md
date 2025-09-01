@@ -3,11 +3,11 @@
 Exploratory analysis of the ISLR/ISLP `Auto` dataset with qualitative variables.  
 Key focus: understanding differences in Auto performance based on origin.  The performance characteristics are highly correlated.
 
-Google Colab notebook:  [E2_9](notebooks/E2_9.ipynb)
+Google Colab notebook:  [E2_10](notebooks/E2_10.ipynb)
 
 ## Quick Look
 
-<img src="figures/boxplotCompany.png" width="700">
+<img src="figures/boston_scatter_figs_all.png" width="700">
 
 ## Highlights
 - Found heavy correlation between cylinders (number of cylinders), displacement (engine size, broadly speaking), horsepower, and weight.  These are anticorrelated with mpg and acceleration.
