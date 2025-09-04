@@ -1,9 +1,9 @@
 # Auto Dataset Analysis
 
-Exploratory analysis of the ISLR/ISLP `Auto` dataset with qualitative variables.  
-Key focus: understanding differences in Auto performance based on origin.  The performance characteristics are highly correlated.
+Exploratory analysis of the ISLR/ISLP `Advertising` dataset with only three quantitative variables.  
+Key focus: understanding the interaction between advertising types and their impact on sales.  Though the features are not particularly well-correlated, it is interesting to check what is the minimal amount of information required to predict sales.
 
-Google Colab notebook:  [E2_9](notebooks/E2_9.ipynb)
+Google Colab notebook:  [3_Advertising](notebooks/3_Advertising.ipynb)
 
 ## Quick Look
 
