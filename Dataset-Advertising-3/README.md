@@ -23,7 +23,7 @@ Google Colab notebook:  [3_Advertising](notebooks/3_Advertising.ipynb)
 
 ## Feature Importances
 - [Correlation Heatmap](figures/upper_corr_matrix.png)
-- [TV Advertising on Sales](figures/TV Advertising on Sales.png)
+- [TV Advertising on Sales](figures/TV\ Advertising\ on\ Sales.png)
 - [Radio_Advertising_on_Sales](figures/Radio_Advertising_on_Sales.png)
 - [Newspaper_Advertising_on_Sales](figures/Newspaper_Advertising_on_Sales.png)
 
