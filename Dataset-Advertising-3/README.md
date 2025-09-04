@@ -1,7 +1,7 @@
 # Auto Dataset Analysis
 
 Exploratory analysis of the ISLR/ISLP `Advertising` dataset with only three quantitative variables.  
-Key focus: understanding the interaction between advertising types and their impact on sales.  Though the features are not particularly well-correlated, it is interesting to check what is the minimal amount of information required to predict sales.
+Key focus: understanding the interaction between advertising types and their impact on sales.  Though the features are not particularly well-correlated, it is interesting to check what is the minimal amount of information required to predict sales.  Each record corresponds to a campaign with some amount of spending on TV, radio, and newspaper advertising.
 
 Google Colab notebook:  [3_Advertising](notebooks/3_Advertising.ipynb)
 
@@ -10,26 +10,22 @@ Google Colab notebook:  [3_Advertising](notebooks/3_Advertising.ipynb)
 <img src="figures/scatter_matrix.png" width="700">
 
 ## Highlights
-- Found heavy correlation between cylinders (number of cylinders), displacement (engine size, broadly speaking), horsepower, and weight.  These are anticorrelated with mpg and acceleration.
-- Mpg is somewhat positively correlated with year, indicating potential technological advancement.
-- Mpg is generally lower for American cars in aggregate, but also lower mpg when looking at the manufacturer level.
-- OLS performs relatively well for predicting Mpg on American cars from quantitative features.  Most important features appear to be weight and year, across regions.
-- Sparse analysis through Lasso shows similar important features.  Acceleration is much less predictive of mpg.
-- Random forest with qualitative Origin variable attached shows origin not at all a driver of mpg.
+- TV is most highly correlated with sales, followed by radio, then by newspaper.  Radio and newspaper have a correlation coefficient of 0.35, higher than that of the 0.23 between newspaper and sales.
+- Taken individually, the highest $\beta_1$ is for radio, at 0.202.  At 200 records, this finding results in a very high t-statistic, rejecting a null hypothesis of $\beta_1 = 0$.
+- Taken together, the variable with the maximum p-value is newspaper spending, so it is natural to perform Forward Selection and pull this variable out of consideration.  After doing so, the F-statistic increases from 570.3 to 859.6.  The F-statistic indicates the confidence of at least one of the remaining variables being significant in predicting sales.  The $R^2$ remained nearly the same, meaning the variation in the prediction was still largely explained by the remaining two variables, radio and TV spending.
+- Adding an interaction term $X_1 \times X_2$ (product of TV and radio spending) increased $R^2$ from 0.87 to 0.97, helping to explain more of the variation in the model.
+- However, this interaction term introduces explicit multicollinearity which can be associated with overfitting.  We expect adding an interaction term to increase Variance Inflation Factors (VIFs), but the highest one only hits 6.947, a moderate amount.  If any or all of the VIFs showed to be over 10, that would show a strong risk of overfitting, for which Lasso or Ridge regression might be needed.
 
 ## Implementation Details
-- Some horsepowers are recorded as `?`, which are removed from analysis.
-- Many cars with the same name are featured in different years; a couple with the same name are featured in the same year.  Each entry has remarkably different specifications, so they are treated as different data points, though names are updated to distinguish them on identification.
-- Company names are extracted from names of cars for EDA; some company names are spelled incorrectly and need to be fixed.  Company names were fixed by hand.
-- Lasso is performed with alpha = 0.2, a moderately high regularization parameter.  This was required due to a high degree of correlation between features.  The resulting model helped to identify important features but will have more natural bias than the OLS model.
-- To implement the Random Forest regressor in scikit-learn (sklearn), the categorial variable for Origin needs to be replaced with a one-hot encoding.  That is, the three possibilities are spread out over three binary columns that are treated as separate features.  It will be interesting to know if there is a way to avoid the process of one-hot encoding, as there is a natural correlation between the resulting features.
+- The numeric column in `Advertising.csv` is not labeled, so it was named `CampaignID`.
+- The correlation coefficients in the correlation matrix are all positive, so the heatmap needed a modification to plot from `vmin = -1.0` to `vmax = 1.0`.
+- To compute VIFs, we run a loop to run OLS across potential features to regress on.
 
 ## Feature Importances
-- [OLS Performance](figures/OLSErr.csv)
-- [OLS Importances](figures/OLSImportances.csv)
-- [Lasso Performance](figures/LassoErr.csv)
-- [Lasso Importances](figures/LassoImportances.csv)
-- [Random Forest Importances](figures/RFImportances.csv)
+- [Correlation_Heatmap](figures/upper_corr_matrix.png)
+- [TV_Advertising_on_Sale](figures/TV_Advertising_on_Sales.png)
+- [Radio_Advertising_on_Sale](figures/Radio_Advertising_on_Sales.png)
+- [Newspaper_Advertising_on_Sale](figures/Newspaper_Advertising_on_Sales.png)
 
 
 ## Requirements
