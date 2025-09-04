@@ -26,6 +26,12 @@ Google Colab notebook:  [3_Advertising](notebooks/3_Advertising.ipynb)
 - [TV Advertising on Sales](figures/TV_Advertising_on_Sales.png)
 - [Radio_Advertising_on_Sales](figures/Radio_Advertising_on_Sales.png)
 - [Newspaper_Advertising_on_Sales](figures/Newspaper_Advertising_on_Sales.png)
+- [OLS Regression Three Features](figures/OLS_Regression_Three_Features.txt)
+- [OLS Regression Max Feature Dropped](figures/OLS_Regression_Max_Feature_Dropped.txt)
+- [OLS Regression Three Features with TV Radio Interaction](figures/OLS_Regression_Three_Features_with_TV_Radio_Interaction.txt)
+- [OLS TV Radio Interaction](figures/OLS_Regression_TV_Radio_Interaction.txt)
+- [VIF without Interaction](figures/VIF-No-Inter.png)
+- [VIF with Interaction](figures/VIF-Inter.png)
 
 
 ## Requirements
