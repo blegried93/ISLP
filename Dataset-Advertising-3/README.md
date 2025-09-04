@@ -7,7 +7,7 @@ Google Colab notebook:  [3_Advertising](notebooks/3_Advertising.ipynb)
 
 ## Quick Look
 
-<img src="figures/boxplotCompany.png" width="700">
+<img src="figures/scatter_matrix.png" width="700">
 
 ## Highlights
 - Found heavy correlation between cylinders (number of cylinders), displacement (engine size, broadly speaking), horsepower, and weight.  These are anticorrelated with mpg and acceleration.
